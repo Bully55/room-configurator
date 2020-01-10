@@ -8,6 +8,18 @@ const conf = {
         path: path.join(__dirname, "/dist"),
         filename: "bundle.js"
     },
+    devServer: {
+        historyApiFallback: true,
+        hot: true,
+        disableHostCheck: true,
+        // proxy: {
+        //     "/api/**": { 
+        //         target: http(dev), 
+        //         secure: false, 
+        //         changeOrigin: true 
+        //     },
+        // }
+    },
     module: {
         rules: [
             {

@@ -12,9 +12,13 @@ extends React.Component<EditorProps, EditorState> {
     render() {
         return <>
             <div className="v-editor">
-                {/* <Switch>
-                    <Route component={EditorRooms}/>
-                </Switch> */}
+                <Switch>
+                    <Route 
+                        path="/editor" 
+                        exact 
+                        component={EditorRooms}
+                    />
+                </Switch>
             </div>
         </>
     }

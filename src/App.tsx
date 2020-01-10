@@ -1,5 +1,5 @@
 import React from "react"
-import { Switch, Route } from "react-router-dom"
+import { Switch, Route, Router, BrowserRouter } from "react-router-dom"
 
 import "./styles/universal"
 import "./styles/main"
@@ -41,7 +41,7 @@ extends React.Component<AppProps, AppState> {
                     <Route 
                         path="/editor"
                         exact
-                        component={EditorRooms}
+                        component={Editor}
                     />
                     <Route 
                         path="/options"

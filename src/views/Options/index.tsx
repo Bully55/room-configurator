@@ -90,6 +90,7 @@ extends React.Component<OptionsProps, OptionsState> {
                             {this.draftMaterials.map((item, i) => {
                                 return (
                                     <Item
+                                        key={i}
                                         text={item.text}
                                         price={10}
                                         id={item.id}
