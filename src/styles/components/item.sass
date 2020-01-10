@@ -1,0 +1,37 @@
+@import "../vars.sass"
+
+div.parameter-item
+    position: relative
+    display: flex
+
+    input
+        position: absolute
+        top: 0
+        left: 0
+        z-index: -1
+        opacity: 0
+        &:checked + label
+            border-color: #ffdd4d
+
+    label
+        display: block
+        background: #fff
+        color: #555555
+        border: 2px solid #cccccc
+        cursor: pointer
+        padding: 10px
+        margin-top: 10px
+        width: 100%
+
+    p
+        margin: 0
+        margin-bottom: 10px
+
+    &.mr
+        margin-right: 10px
+
+    &.w48
+        width: 49%
+
+    &.w30
+        width: 32%

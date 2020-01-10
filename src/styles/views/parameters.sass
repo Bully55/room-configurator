@@ -1,0 +1,69 @@
+@import "../vars"
+
+div.v-parameters
+
+    div.parameters-form
+        max-width: 500px
+        margin: 0 auto
+
+    div.row
+        display: flex
+        justify-content: space-between
+        flex-wrap: wrap
+
+    p.param-title
+        font-size: 18px
+        font-weight: 600
+
+    input
+        font-size: 18px
+        color: #333
+        padding: 10px 5px
+
+        &.area-inp
+            max-width: 110px
+            border-radius: 2px
+            border: 1px solid #000
+            margin-right: 5px
+
+    // div.rooms-quantity
+    //     font-size: 18px
+    //     margin-left: 10px
+
+    label.param-label
+        position: relative
+        cursor: pointer
+        font-size: 18px
+        input
+            position: absolute
+            left: 0
+            top: 0
+            opacity: 0
+            z-index: -1    
+            &:checked + span.text
+                border-color: red
+                background: linear-gradient(to top, #ffd400, #ffd400)
+
+    span.text
+        display: inline-block
+        padding: 10px 15px
+        border: 1px solid orange
+
+    select.ceiling-select
+        // display: inline-block
+        min-width: 110px
+        padding: 10px 5px
+        font-size: 18px
+
+    .param-btn
+        display: block
+        text-align: center
+        padding: 20px 15px
+        margin-top: 20px
+        border: 2px solid orange
+        font-size: 18px
+        text-transform: uppercase
+        cursor: pointer
+
+    .ml
+        margin-left: 10px
