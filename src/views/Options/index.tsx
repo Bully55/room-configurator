@@ -90,7 +90,7 @@ extends React.Component<OptionsProps, OptionsState> {
                             {this.draftMaterials.map((item, i) => {
                                 return (
                                     <Item
-                                        key={i}
+                                        key={item.id}
                                         text={item.text}
                                         price={10}
                                         id={item.id}
@@ -107,7 +107,7 @@ extends React.Component<OptionsProps, OptionsState> {
                             {this.soundInsulation.map((item, i) => {
                                 return (
                                     <Item
-                                        key={i}
+                                        key={item.id}
                                         text={item.text}
                                         price={10}
                                         id={item.id}
@@ -124,7 +124,7 @@ extends React.Component<OptionsProps, OptionsState> {
                             {this.electricalPanel.map((item, i) => {
                                 return (
                                     <Item
-                                        key={i}
+                                        key={item.id}
                                         text={item.text}
                                         price={10}
                                         id={item.id}
@@ -141,7 +141,7 @@ extends React.Component<OptionsProps, OptionsState> {
                             {this.designProj.map((item, i) => {
                                 return (
                                     <Item
-                                        key={i}
+                                        key={item.id}
                                         text={item.text}
                                         price={10}
                                         id={item.id}
