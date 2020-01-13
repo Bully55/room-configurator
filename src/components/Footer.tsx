@@ -17,7 +17,7 @@ extends React.Component {
                     Total price: {ParametersStore.totalPrice} грн.
                 </span>
                 <Link 
-                    to="/"
+                    to="/editor"
                     className="footer-btn"
                 >
                     Продолжить

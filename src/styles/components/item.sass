@@ -12,6 +12,27 @@ div.parameter-item
         opacity: 0
         &:checked + label
             border-color: #ffdd4d
+            div.sub-info
+                display: block
+            div.price-wrap
+                display: none
+
+    div.sub-info
+        display: none
+
+    div.materials
+        display: flex
+        justify-content: flex-start
+        flex-wrap: wrap
+
+    div.material-circle
+        height: 40px
+        width: 40px
+        border-radius: 50%
+        border: 1px solid #ddd
+        margin-right: 5px
+        cursor: pointer
+        background-size: cover
 
     label
         display: block
@@ -23,12 +44,25 @@ div.parameter-item
         margin-top: 10px
         width: 100%
 
+    img.main-image
+        width: 100%
+
     p
         margin: 0
         margin-bottom: 10px
 
+    &.cornice
+        max-width: 150px
+        margin-right: 10px
+
     &.mr
         margin-right: 10px
+
+    &.w100
+        width: 100%
+
+    &.w50
+        width: 50%
 
     &.w48
         width: 49%

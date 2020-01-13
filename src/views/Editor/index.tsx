@@ -1,6 +1,10 @@
 import React from "react"
 import { Switch, Route } from "react-router-dom"
-import EditorRooms from "./components/EditorRooms"
+
+import "../../styles/views/editor/editor"
+
+import EditorRooms from "./views/EditorRooms"
+import EditorSidebar from "./components/EditorSidebar"
 
 export interface EditorProps {}
 
@@ -19,6 +23,7 @@ extends React.Component<EditorProps, EditorState> {
                         component={EditorRooms}
                     />
                 </Switch>
+                <EditorSidebar />
             </div>
         </>
     }
