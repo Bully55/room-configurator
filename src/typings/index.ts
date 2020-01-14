@@ -8,5 +8,6 @@ export type Rooms = {
 export type SubParam = {
     id: number,
     text: string,
-    price: number
+    price: number,
+    defaultChecked?: boolean
 }

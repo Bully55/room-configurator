@@ -4,7 +4,12 @@ class Parameters {
     @observable area: number = 50
     @observable rooms: number = 1
     @observable doors: number = 1
-    @observable ceilingHright: number = 2.4
+    @observable ceilingHeight: number = 2.4
+    // @observable
+    // toalSubParams: any = {
+    //     ceiling: number,
+
+    // }
     @observable totalPrice: number
 
     @action
@@ -20,7 +25,7 @@ class Parameters {
                 this.doors = value
                 break;
             case "ceiling":
-                this.ceilingHright = value
+                this.ceilingHeight = value
                 break;
         }
     }
@@ -31,7 +36,7 @@ class Parameters {
             let totalArea = this.area * 154
             let totalRooms = this.rooms * 5000
             let totalDoors = this.doors * 1000
-            let totalWall = this.ceilingHright * 15
+            let totalWall = this.ceilingHeight * 15
             this.totalPrice = totalArea + totalDoors + totalWall + totalRooms
         },
         {
