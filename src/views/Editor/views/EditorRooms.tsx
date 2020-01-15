@@ -8,19 +8,24 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
 export interface EditorRoomsProps {}
 
-export interface EditorRoomsState {}
+export interface EditorRoomsState {
+    textures: string
+}
 
 export default
 class EditorRooms
 extends React.Component<EditorRoomsProps, EditorRoomsState> {
 
+    state = {
+        textures: "Grass_001_NORM.jpg"
+    }
+
     container: HTMLDivElement
 
     componentDidMount() {
-        var scene = new THREE.Scene();
-        var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
-        var objLoader = new OBJLoader()
-        var renderer = new THREE.WebGLRenderer()
+        let scene = new THREE.Scene()
+        let camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 )
+        let renderer = new THREE.WebGLRenderer({ antialias: true })
         let controls = new OrbitControls(camera, renderer.domElement)
 
         camera.position.set( 0, 0, 100 )
@@ -30,15 +35,52 @@ extends React.Component<EditorRoomsProps, EditorRoomsState> {
         renderer.setSize( window.innerWidth - 400, window.innerHeight - 150 )
         this.container.appendChild( renderer.domElement )
 
+        let amColor = "#faffe3"
+        let amLight = new THREE.AmbientLight(amColor)
+        scene.add(amLight)
+
+        let light = new THREE.DirectionalLight( 0xfff7e8, 1 )
+        scene.add(light)
+
+        let manager = new THREE.LoadingManager()
+        let imageLoader = new THREE.ImageLoader(manager)
+
+        let texture = new THREE.Texture()
+
+        imageLoader.load(`./static/objects/${this.state.textures}`, function(image) {
+            texture.image = image
+            texture.needsUpdate = true
+        })
+
+        let meshes: THREE.Mesh[] = []
+
+        let objLoader = new OBJLoader()
+
         objLoader.load(
             "./static/objects/LivingRoom_WallAttach.obj",
             ( object ) => {
-                object.position.x = -860
-                object.position.y = -260
-                object.position.z = 200
-
                 console.log(object)
-                scene.add( object )
+                
+                object.traverse((child) => {
+                    if( child instanceof THREE.Mesh )
+                        meshes.push(child)
+                })
+
+                let wall = meshes[0]
+
+                wall.position.x = -860
+                wall.position.y = -260
+                wall.position.z = 200
+
+                scene.add( wall )
+
+                let bumpMap = new THREE.TextureLoader().load("./static/objects/text1.jpg")
+
+                wall.material = new THREE.MeshPhongMaterial({
+                    map: texture,
+                    bumpScale: 0,
+                })
+
                 renderer.render( scene, camera )
             },
             ( xhr ) => {
@@ -61,8 +103,18 @@ extends React.Component<EditorRoomsProps, EditorRoomsState> {
         animate()
     }
 
+    handleChange = () => {
+        console.log(1)
+        this.setState({
+            textures: "Grass_001_NORM.jpg"
+        })
+    }
+
     render() {
         return <>
+            {/* <button onClick={this.handleChange}>
+                Change texture
+            </button> */}
             <div
                 ref={r => this.container = r} 
                 className="editor-rooms"
