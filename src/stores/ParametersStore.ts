@@ -1,31 +1,34 @@
 import { observable, action, autorun } from "mobx"
 
 class Parameters {
-    @observable area: number = 50
-    @observable rooms: number = 1
-    @observable doors: number = 1
-    @observable ceilingHeight: number = 2.4
+    @observable 
+    startPoints: any = {
+        area: 50,
+        rooms: 1,
+        doors: 1,
+        ceilingHeight: 2.4
+    }
+    @observable totalPrice: number
     // @observable
     // toalSubParams: any = {
     //     ceiling: number,
-
+    //     floor: number
     // }
-    @observable totalPrice: number
 
     @action
     parameterChange = (parameter: string, value: number) => {
         switch(parameter) {
             case "area":
-                this.area = value
+                this.startPoints.area = value
                 break;
             case "rooms":
-                this.rooms = value
+                this.startPoints.rooms = value
                 break;
             case "doors":
-                this.doors = value
+                this.startPoints.doors = value
                 break;
             case "ceiling":
-                this.ceilingHeight = value
+                this.startPoints.ceilingHeight = value
                 break;
         }
     }
@@ -33,10 +36,10 @@ class Parameters {
     @action
     changeTotalPrice = autorun(
         () => {
-            let totalArea = this.area * 154
-            let totalRooms = this.rooms * 5000
-            let totalDoors = this.doors * 1000
-            let totalWall = this.ceilingHeight * 15
+            let totalArea = this.startPoints.area * 154
+            let totalRooms = this.startPoints.rooms * 5000
+            let totalDoors = this.startPoints.doors * 1000
+            let totalWall = this.startPoints.ceilingHeight * 15
             this.totalPrice = totalArea + totalDoors + totalWall + totalRooms
         },
         {
