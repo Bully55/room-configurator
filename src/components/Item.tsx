@@ -12,6 +12,7 @@ export interface ItemProps {
     descr?: string,
     defaultChecked?: boolean,
     materials?: string[],
+    onChange?: () => void
 }
 
 export interface ItemState {
