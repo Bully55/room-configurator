@@ -44,7 +44,7 @@ class Parameters {
         },
         {
             onError(e) {
-                window.alert("Please enter a valid age")
+                // window.alert("Please enter a valid age")
             }
         }
     )

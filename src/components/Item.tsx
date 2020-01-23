@@ -1,17 +1,21 @@
 import React from "react"
 
 import "../styles/components/item"
+import Parameters from "../stores/Parameters"
+import { SubParam } from "../typings/index"
+import { toJS } from "mobx"
 
 export interface ItemProps {
     image?: string,
-    text: string,
-    price?: number,
-    id: string | number,
+    // text: string,
+    // price?: number,
+    // id: string | number,
     name: string,
     className?: string,
-    descr?: string,
-    defaultChecked?: boolean,
-    materials?: string[],
+    // descr?: string,
+    // defaultChecked?: boolean,
+    item: SubParam,
+    // materials?: string[],
     onChange?: () => void
 }
 
@@ -23,20 +27,32 @@ export default
 class Item
 extends React.Component<ItemProps, ItemState> {
 
-    private defaultProps = {
+    static defaultProps = {
         defaultChecked: false
     }
 
+    componentDidMount() {
+        // if(this.props.item.defaultChecked)
+        //     Parameters.selectedParams
+    }
+
+    handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        Parameters.selectedParams(event.currentTarget.name, this.props.item)
+        console.log("Selected: ", toJS(Parameters.ceilingSelected))
+    }
+
     render() {
+        let { item } = this.props
         return <>
             <div className={`parameter-item ${this.props.className}`}>
                 <input 
                     type="radio"
-                    id={`${this.props.id}`}
+                    id={`${item.id}`}
                     name={this.props.name}
-                    defaultChecked={this.props.defaultChecked}
+                    defaultChecked={item.defaultChecked}
+                    onChange={this.handleChange}
                 />
-                <label htmlFor={`${this.props.id}`}>
+                <label htmlFor={`${item.id}`}>
                     {this.props.image &&
                         <img 
                             src={this.props.image}
@@ -45,13 +61,13 @@ extends React.Component<ItemProps, ItemState> {
                         />
                     }
                     <p className="text">
-                        {this.props.text}
+                        {item.text}
                     </p>
                     <div className="sub-info">
-                        {this.props.materials &&
+                        {this.props.item.materials &&
                             <div className="materials">
-                                {this.props.materials 
-                                    ? this.props.materials.map((image, i) => {
+                                {this.props.item.materials 
+                                    ? this.props.item.materials.map((image, i) => {
                                         return (
                                             <div
                                                 key={i}
@@ -65,11 +81,11 @@ extends React.Component<ItemProps, ItemState> {
                             </div>
                         }
                         <p className="descr">
-                            {this.props.descr}
+                            {this.props.item.descr}
                         </p>
                     </div>
                     <div className="price-wrap">
-                        <span>+ {this.props.price}</span>
+                        <span>+ {item.price}</span>
                         <span>&#8372;</span>
                     </div>
                 </label>

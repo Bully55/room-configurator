@@ -17,7 +17,7 @@ class EditorRooms
 extends React.Component<EditorRoomsProps, EditorRoomsState> {
 
     state = {
-        textures: "Grass_001_NORM.jpg"
+        textures: "text1.jpg"
     }
 
     container: HTMLDivElement
@@ -47,7 +47,7 @@ extends React.Component<EditorRoomsProps, EditorRoomsState> {
 
         let texture = new THREE.Texture()
 
-        imageLoader.load(`./static/objects/${this.state.textures}`, function(image) {
+        imageLoader.load(`./static/objects/text1.jpg`, (image) => {
             texture.image = image
             texture.needsUpdate = true
         })
@@ -57,7 +57,7 @@ extends React.Component<EditorRoomsProps, EditorRoomsState> {
         let objLoader = new OBJLoader()
 
         objLoader.load(
-            "./static/objects/LivingRoom_WallAttach.obj",
+            "./static/objects/NewRoomOne.obj",
             ( object ) => {
                 console.log(object)
                 
@@ -74,11 +74,9 @@ extends React.Component<EditorRoomsProps, EditorRoomsState> {
 
                 scene.add( wall )
 
-                let bumpMap = new THREE.TextureLoader().load("./static/objects/text1.jpg")
-
+                texture.repeat.set(1, 1)
                 wall.material = new THREE.MeshPhongMaterial({
-                    map: texture,
-                    bumpScale: 0,
+                    map: texture
                 })
 
                 renderer.render( scene, camera )
