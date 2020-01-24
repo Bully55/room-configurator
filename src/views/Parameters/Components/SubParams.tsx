@@ -26,10 +26,6 @@ extends React.Component {
         }, 1000)
     }
 
-    handleChange = () => {
-        
-    }
-
     render() {
         let { ceiling, wall, floor } = Parameters
         return <>
@@ -43,12 +39,7 @@ extends React.Component {
                             <Item
                                 key={i}
                                 item={item}
-                                // text={item.text}
-                                // price={item.price}
-                                // id={item.id}
-                                // defaultChecked={item.defaultChecked}
                                 name="ceiling-param"
-                                onChange={this.handleChange}
                             />
                         )
                     })
@@ -65,12 +56,7 @@ extends React.Component {
                             <Item
                                 key={i}
                                 item={item}
-                                // text={item.text}
-                                // price={item.price}
-                                // id={item.id}
-                                // defaultChecked={item.defaultChecked}
                                 name="wall-param"
-                                onChange={this.handleChange}
                             />
                         )
                     })
@@ -90,12 +76,7 @@ extends React.Component {
                             <Item
                                 key={i}
                                 item={item}
-                                // text={item.text}
-                                // price={item.price}
-                                // id={item.id}
-                                // defaultChecked={item.defaultChecked}
                                 name="floor-param"
-                                onChange={this.handleChange}
                             />
                         )
                     })

@@ -4,6 +4,12 @@ import { SubParam } from "../../typings/index"
 import "../../styles/views/options"
 
 import Item from "../../components/Item"
+import {
+    draftMaterials,
+    soundInsulation,
+    electricalPanel,
+    designProj
+} from "../../mockup/index"
 
 export interface OptionsProps {}
 
@@ -13,72 +19,72 @@ export default
 class Options
 extends React.Component<OptionsProps, OptionsState> {
 
-    draftMaterials: SubParam[] = [
-        {
-            text: "Черновые материалы Старатели / Перфекта",
-            id: Math.random(),
-            price: 214
-        },
-        {
-            text: "Черновые материалы Кнауф Ротбанд / Weber / Sheetrock",
-            id: Math.random(),
-            price: 896
-        },
-    ]
+    // draftMaterials: SubParam[] = [
+    //     {
+    //         text: "Черновые материалы Старатели / Перфекта",
+    //         id: Math.random(),
+    //         price: 214
+    //     },
+    //     {
+    //         text: "Черновые материалы Кнауф Ротбанд / Weber / Sheetrock",
+    //         id: Math.random(),
+    //         price: 896
+    //     },
+    // ]
 
-    soundInsulation: SubParam[] = [
-        {
-            text: "Без шумоизоляции",
-            id: Math.random(),
-            price: 251
-        },
-        {
-            text: "Шуманет-100 Гидро",
-            id: Math.random(),
-            price: 843
-        },
-        {
-            text: "Шуманет-100 Супер",
-            id: Math.random(),
-            price: 1244
-        },
-    ]
+    // soundInsulation: SubParam[] = [
+    //     {
+    //         text: "Без шумоизоляции",
+    //         id: Math.random(),
+    //         price: 251
+    //     },
+    //     {
+    //         text: "Шуманет-100 Гидро",
+    //         id: Math.random(),
+    //         price: 843
+    //     },
+    //     {
+    //         text: "Шуманет-100 Супер",
+    //         id: Math.random(),
+    //         price: 1244
+    //     },
+    // ]
 
-    electricalPanel: SubParam[] = [
-        {
-            text: "Базовый",
-            id: Math.random(),
-            price: 299
-        },
-        {
-            text: "Базовый+",
-            id: Math.random(),
-            price: 590
-        },
-        {
-            text: "Максимальный",
-            id: Math.random(),
-            price: 1454
-        },
-    ]
+    // electricalPanel: SubParam[] = [
+    //     {
+    //         text: "Базовый",
+    //         id: Math.random(),
+    //         price: 299
+    //     },
+    //     {
+    //         text: "Базовый+",
+    //         id: Math.random(),
+    //         price: 590
+    //     },
+    //     {
+    //         text: "Максимальный",
+    //         id: Math.random(),
+    //         price: 1454
+    //     },
+    // ]
 
-    designProj: SubParam[] = [
-        {
-            text: 'Дизайн-проект "Базовый"',
-            id: Math.random(),
-            price: 299
-        },
-        {
-            text: 'Дизайн-проект "Расширенный"',
-            id: Math.random(),
-            price: 550
-        },
-        {
-            text: 'Дизайн-проект "Максимальный"',
-            id: Math.random(),
-            price: 1334
-        },
-    ]
+    // designProj: SubParam[] = [
+    //     {
+    //         text: 'Дизайн-проект "Базовый"',
+    //         id: Math.random(),
+    //         price: 299
+    //     },
+    //     {
+    //         text: 'Дизайн-проект "Расширенный"',
+    //         id: Math.random(),
+    //         price: 550
+    //     },
+    //     {
+    //         text: 'Дизайн-проект "Максимальный"',
+    //         id: Math.random(),
+    //         price: 1334
+    //     },
+    // ]
 
     render() {
         return <>
@@ -87,13 +93,11 @@ extends React.Component<OptionsProps, OptionsState> {
                     <div className="param-item-wrap">
                         <span className="title">Черновые материалы</span>
                         <div className="options-row">
-                            {this.draftMaterials.map((item, i) => {
+                            {draftMaterials.map((item, i) => {
                                 return (
                                     <Item
                                         key={item.id}
-                                        text={item.text}
-                                        price={10}
-                                        id={item.id}
+                                        item={item}
                                         name="draft"
                                         className="w48"
                                     />
@@ -104,13 +108,11 @@ extends React.Component<OptionsProps, OptionsState> {
                     <div className="param-item-wrap">
                         <span className="title">Шумоизоляция пола</span>
                         <div className="options-row">
-                            {this.soundInsulation.map((item, i) => {
+                            {soundInsulation.map((item, i) => {
                                 return (
                                     <Item
                                         key={item.id}
-                                        text={item.text}
-                                        price={10}
-                                        id={item.id}
+                                        item={item}
                                         name="sound"
                                         className="w30"
                                     />
@@ -121,13 +123,11 @@ extends React.Component<OptionsProps, OptionsState> {
                     <div className="param-item-wrap">
                         <span className="title">Электрощит</span>
                         <div className="options-row">
-                            {this.electricalPanel.map((item, i) => {
+                            {electricalPanel.map((item, i) => {
                                 return (
                                     <Item
                                         key={item.id}
-                                        text={item.text}
-                                        price={10}
-                                        id={item.id}
+                                        item={item}
                                         name="electrical"
                                         className="w30"
                                     />
@@ -138,13 +138,11 @@ extends React.Component<OptionsProps, OptionsState> {
                     <div className="param-item-wrap">
                         <span className="title">Дизайн проект</span>
                         <div className="options-row">
-                            {this.designProj.map((item, i) => {
+                            {designProj.map((item, i) => {
                                 return (
                                     <Item
                                         key={item.id}
-                                        text={item.text}
-                                        price={10}
-                                        id={item.id}
+                                        item={item}
                                         name="design"
                                         className="w30"
                                     />

@@ -26,10 +26,10 @@ extends React.Component<EditorRoomsProps, EditorRoomsState> {
         let scene = new THREE.Scene()
         let camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 )
         let renderer = new THREE.WebGLRenderer({ antialias: true })
-        let controls = new OrbitControls(camera, renderer.domElement)
+        // let controls = new OrbitControls(camera, renderer.domElement)
 
         camera.position.set( 0, 0, 100 )
-        controls.update()
+        // controls.update()
 
         renderer.setClearColor(0x808080)
         renderer.setSize( window.innerWidth - 400, window.innerHeight - 150 )
@@ -68,9 +68,9 @@ extends React.Component<EditorRoomsProps, EditorRoomsState> {
 
                 let wall = meshes[0]
 
-                wall.position.x = -860
-                wall.position.y = -260
-                wall.position.z = 200
+                wall.position.x = -300
+                wall.position.y = -160
+                wall.position.z = -250
 
                 scene.add( wall )
 
@@ -93,7 +93,7 @@ extends React.Component<EditorRoomsProps, EditorRoomsState> {
 
             requestAnimationFrame( animate )
         
-            controls.update()
+            // controls.update()
         
             renderer.render( scene, camera )
         

@@ -3,17 +3,17 @@ import { SubParam } from "typings"
 
 class Parameters {
     @observable ceiling: SubParam[]
-    @observable ceilingSelected: SubParam
     @observable wall: SubParam[]
-    @observable wallSelected: SubParam
     @observable floor: SubParam[]
-    @observable floorSelected: SubParam
+    @observable
+    selectedPrices = {
+        ceiling: 10000,
+        wall: 8000,
+        floor: 12500
+    }
 
     @observable 
-    paramTotalPrice: number
-
-    @observable
-    parametersTotal: number = 0
+    paramTotalPrice: number = this.selectedPrices.ceiling + this.selectedPrices.wall + this.selectedPrices.floor
 
     @action
     setParams = (paramType: string, parameters: SubParam[]) => {
@@ -31,37 +31,23 @@ class Parameters {
     }
 
     @action
-    selectedParams = (type: string, element: SubParam) => {
-        switch(type) {
+    setParamsPrice = (paramType: string, price: number) => {
+        let { ceiling, floor, wall } = this.selectedPrices
+        
+        switch(paramType) {
             case "ceiling-param":
-                this.ceilingSelected = element
+                this.selectedPrices.ceiling = price
                 break;
             case "wall-param":
-                this.wallSelected = element
+                this.selectedPrices.wall = price
                 break;
             case "floor-param":
-                this.floorSelected = element
+                this.selectedPrices.floor = price
                 break;
         }
+        
+        this.paramTotalPrice = ceiling + floor + wall
     }
-
-    // @action
-    // getElementById = () => {
-
-    // }
-
-    @action
-    parametersPrice = autorun(
-        () => {
-            let { ceilingSelected, wallSelected, floorSelected } = this
-            this.paramTotalPrice = ceilingSelected.price + wallSelected.price + floorSelected.price
-        },
-        {
-            onError(e) {
-                // window.alert("Please enter a valid age")
-            }
-        }
-    )
 }
 
 export default new Parameters()

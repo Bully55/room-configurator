@@ -7,15 +7,9 @@ import { toJS } from "mobx"
 
 export interface ItemProps {
     image?: string,
-    // text: string,
-    // price?: number,
-    // id: string | number,
     name: string,
     className?: string,
-    // descr?: string,
-    // defaultChecked?: boolean,
     item: SubParam,
-    // materials?: string[],
     onChange?: () => void
 }
 
@@ -37,8 +31,8 @@ extends React.Component<ItemProps, ItemState> {
     }
 
     handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        Parameters.selectedParams(event.currentTarget.name, this.props.item)
-        console.log("Selected: ", toJS(Parameters.ceilingSelected))
+        Parameters.setParamsPrice(event.currentTarget.name, this.props.item.price)
+        console.log(this.props.item.price)
     }
 
     render() {
@@ -85,7 +79,7 @@ extends React.Component<ItemProps, ItemState> {
                         </p>
                     </div>
                     <div className="price-wrap">
-                        <span>+ {item.price}</span>
+                        <span>{item.price}</span>
                         <span>&#8372;</span>
                     </div>
                 </label>

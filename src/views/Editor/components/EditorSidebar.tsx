@@ -57,11 +57,7 @@ extends React.Component<SidebarProps, SidebarState> {
                             return (
                                 <Item
                                     key={i}
-                                    // text={item.text}
-                                    // id={item.id}
                                     name="wall-decoration"
-                                    // price={item.price}
-                                    // defaultChecked={item.defaultChecked}
                                     className="wall-decoration"
                                     item={item}
                                 />
@@ -90,13 +86,7 @@ extends React.Component<SidebarProps, SidebarState> {
                             return (
                                 <Item
                                     key={i}
-                                    // id={item.id}
                                     name="floor"
-                                    // price={item.price}
-                                    // text={item.text}
-                                    // materials={item.materials}
-                                    // descr={item.descr}
-                                    // defaultChecked={item.defaultChecked}
                                     className="w100"
                                     item={item}
                                 />
@@ -111,13 +101,7 @@ extends React.Component<SidebarProps, SidebarState> {
                             return (
                                 <Item
                                     key={i}
-                                    // id={item.id}
                                     name="skirting-board"
-                                    // price={item.price}
-                                    // text={item.text}
-                                    // materials={item.materials}
-                                    // descr={item.descr}
-                                    // defaultChecked={item.defaultChecked}
                                     className="w100"
                                     item={item}
                                 />
@@ -133,13 +117,7 @@ extends React.Component<SidebarProps, SidebarState> {
                                 <Item
                                     key={i}
                                     image={item.image}
-                                    // id={item.id}
                                     name="cornice"
-                                    // price={item.price}
-                                    // text={item.text}
-                                    // materials={item.materials}
-                                    // descr={item.descr}
-                                    // defaultChecked={item.defaultChecked}
                                     className="cornice"
                                     item={item}
                                 />

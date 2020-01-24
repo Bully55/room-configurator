@@ -1,4 +1,5 @@
 import { observable, action, autorun } from "mobx"
+import Params from "./Parameters"
 
 class Parameters {
     @observable 
@@ -40,7 +41,7 @@ class Parameters {
             let totalRooms = this.startPoints.rooms * 5000
             let totalDoors = this.startPoints.doors * 1000
             let totalWall = this.startPoints.ceilingHeight * 15
-            this.totalPrice = totalArea + totalDoors + totalWall + totalRooms
+            this.totalPrice = totalArea + totalDoors + totalWall + totalRooms + Params.paramTotalPrice
         },
         {
             onError(e) {
