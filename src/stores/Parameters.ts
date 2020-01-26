@@ -1,4 +1,4 @@
-import { observable, action, autorun } from "mobx"
+import { observable, action, computed } from "mobx"
 import { SubParam } from "typings"
 
 class Parameters {
@@ -9,11 +9,26 @@ class Parameters {
     selectedPrices = {
         ceiling: 10000,
         wall: 8000,
-        floor: 12500
+        floor: 12500,
+        draftMaterials: 214,
+        soundInsulation: 251,
+        electricalPanel: 299,
+        designProj: 239
     }
 
-    @observable 
-    paramTotalPrice: number = this.selectedPrices.ceiling + this.selectedPrices.wall + this.selectedPrices.floor
+    @computed 
+    get paramTotalPrice() : number {
+        let { 
+            ceiling, 
+            wall, 
+            floor, 
+            draftMaterials, 
+            soundInsulation, 
+            electricalPanel, 
+            designProj 
+        } = this.selectedPrices
+        return ceiling + wall + floor + draftMaterials + soundInsulation + electricalPanel + designProj
+    } 
 
     @action
     setParams = (paramType: string, parameters: SubParam[]) => {
@@ -44,9 +59,21 @@ class Parameters {
             case "floor-param":
                 this.selectedPrices.floor = price
                 break;
+            case "draft":
+                this.selectedPrices.draftMaterials = price
+                break;
+            case "sound":
+                this.selectedPrices.soundInsulation = price
+                break;
+            case "electrical":
+                this.selectedPrices.electricalPanel = price
+                break;
+            case "design":
+                this.selectedPrices.designProj = price
+                break;
         }
         
-        this.paramTotalPrice = ceiling + floor + wall
+        // this.paramTotalPrice = ceiling + floor + wall
     }
 }
 

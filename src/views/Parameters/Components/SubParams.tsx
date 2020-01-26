@@ -63,9 +63,6 @@ extends React.Component {
                     : "Loading..."
                 }
             </div>
-            <div>
-                <span>Price: {Parameters.paramTotalPrice}</span>
-            </div>
             <div className="param-item-wrap">
                 <span className="sub-params-title">
                     Стяжка потолка

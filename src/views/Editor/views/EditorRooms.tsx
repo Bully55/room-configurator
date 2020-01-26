@@ -50,6 +50,8 @@ extends React.Component<EditorRoomsProps, EditorRoomsState> {
         imageLoader.load(`./static/objects/text1.jpg`, (image) => {
             texture.image = image
             texture.needsUpdate = true
+            texture.wrapS = 10
+            texture.wrapT = 10
         })
 
         let meshes: THREE.Mesh[] = []
