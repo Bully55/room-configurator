@@ -1,10 +1,11 @@
-import { observable, action, computed } from "mobx"
+import { observable, action, computed, toJS } from "mobx"
 import { SubParam } from "typings"
 
 class Parameters {
     @observable ceiling: SubParam[]
     @observable wall: SubParam[]
     @observable floor: SubParam[]
+    // @observable selectedParams: string[] = [] as string[]
     @observable
     selectedPrices = {
         ceiling: 10000,
@@ -15,6 +16,9 @@ class Parameters {
         electricalPanel: 299,
         designProj: 239
     }
+    
+    @observable
+    allParameters: SubParam[] = [].concat(this.ceiling, this.wall, this.floor)
 
     @computed 
     get paramTotalPrice() : number {
@@ -46,34 +50,34 @@ class Parameters {
     }
 
     @action
-    setParamsPrice = (paramType: string, price: number) => {
-        let { ceiling, floor, wall } = this.selectedPrices
-        
+    setParamsPrice = (paramType: string, item: SubParam) => {
+        // this.selectedParams.push(item.id)
+
         switch(paramType) {
             case "ceiling-param":
-                this.selectedPrices.ceiling = price
+                this.selectedPrices.ceiling = item.price
                 break;
             case "wall-param":
-                this.selectedPrices.wall = price
+                this.selectedPrices.wall = item.price
                 break;
             case "floor-param":
-                this.selectedPrices.floor = price
+                this.selectedPrices.floor = item.price
                 break;
             case "draft":
-                this.selectedPrices.draftMaterials = price
+                this.selectedPrices.draftMaterials = item.price
                 break;
             case "sound":
-                this.selectedPrices.soundInsulation = price
+                this.selectedPrices.soundInsulation = item.price
                 break;
             case "electrical":
-                this.selectedPrices.electricalPanel = price
+                this.selectedPrices.electricalPanel = item.price
                 break;
             case "design":
-                this.selectedPrices.designProj = price
+                this.selectedPrices.designProj = item.price
                 break;
         }
-        
-        // this.paramTotalPrice = ceiling + floor + wall
+
+        console.log(toJS(this.selectedParams))
     }
 }
 

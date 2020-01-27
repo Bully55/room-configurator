@@ -18,13 +18,13 @@ export default
 class SubParams
 extends React.Component {
 
-    componentDidMount() {
-        window.setTimeout(() => {
-            Parameters.setParams("ceiling", ceilingParams)
-            Parameters.setParams("wall", wallParams)
-            Parameters.setParams("floor", floorParams)
-        }, 1000)
-    }
+    // componentDidMount() {
+    //     window.setTimeout(() => {
+    //         Parameters.setParams("ceiling", ceilingParams)
+    //         Parameters.setParams("wall", wallParams)
+    //         Parameters.setParams("floor", floorParams)
+    //     }, 1000)
+    // }
 
     render() {
         let { ceiling, wall, floor } = Parameters
@@ -43,7 +43,7 @@ extends React.Component {
                             />
                         )
                     })
-                    : "Loading..."
+                    : <div>Loading...</div>
                 }
             </div>
             <div className="param-item-wrap">
@@ -60,7 +60,7 @@ extends React.Component {
                             />
                         )
                     })
-                    : "Loading..."
+                    : <div>Loading...</div>
                 }
             </div>
             <div className="param-item-wrap">
@@ -77,7 +77,7 @@ extends React.Component {
                             />
                         )
                     })
-                    : "Loading..."
+                    : <div>Loading...</div>
                 }
             </div>
         </>

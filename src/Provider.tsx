@@ -9,9 +9,13 @@ extends React.Component {
         return <>
             <BrowserRouter>
                 <Switch>
-                    <Route path="/" component={App}/>
+                    <Route 
+                        path="/"
+                        component={App}
+                    />
                 </Switch>
             </BrowserRouter>
+            {/* <App /> */}
         </>
     }
 }

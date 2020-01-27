@@ -2,12 +2,14 @@ import React from "react"
 
 import "../../styles/views/parameters"
 
-import ParametersStore from "../../stores/ParametersStore"
 import { observer } from "mobx-react"
 import { Link } from "react-router-dom"
 import Item from "../../components/Item"
 import { Rooms, SubParam } from "typings"
 import SubParams from "./Components/SubParams"
+import ParametersStore from "../../stores/ParametersStore"
+import SubParameters from "../../stores/Parameters"
+import { wallParams, floorParams, ceilingParams } from "../../mockup"
 
 export interface ParametersProps {
     
@@ -24,6 +26,14 @@ extends React.Component<ParametersProps, ParametersState> {
 
     state = {
         showSubParam: false
+    }
+
+    componentDidMount() {
+        window.setTimeout(() => {
+            SubParameters.setParams("ceiling", ceilingParams)
+            SubParameters.setParams("wall", wallParams)
+            SubParameters.setParams("floor", floorParams)
+        }, 1000)
     }
 
     rooms: Rooms[] = [
@@ -241,18 +251,18 @@ extends React.Component<ParametersProps, ParametersState> {
                             </select>
                         </div>
                     </div>
-                    <div 
+                    {/* <div 
                         className="param-btn"
                         onClick={this.showSubParams}
                     >
                         Выбор черновой отделки
                     </div>
-                    {this.state.showSubParam &&
+                    {this.state.showSubParam && */}
                         <SubParams />
-                    }
+                    {/* } */}
                     <div>
                         <Link 
-                            to="/" 
+                            to="/editor" 
                             className="sub-param param-btn"
                         >
                             Продолжить

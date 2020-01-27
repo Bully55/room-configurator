@@ -31,7 +31,7 @@ extends React.Component<ItemProps, ItemState> {
     }
 
     handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        Parameters.setParamsPrice(event.currentTarget.name, this.props.item.price)
+        Parameters.setParamsPrice(event.currentTarget.name, this.props.item)
         console.log(this.props.item.price)
     }
 
@@ -43,7 +43,7 @@ extends React.Component<ItemProps, ItemState> {
                     type="radio"
                     id={`${item.id}`}
                     name={this.props.name}
-                    defaultChecked={item.defaultChecked}
+                    defaultChecked={item.isSelected}
                     onChange={this.handleChange}
                 />
                 <label htmlFor={`${item.id}`}>

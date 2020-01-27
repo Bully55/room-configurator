@@ -9,7 +9,7 @@ export type SubParam = {
     id: string,
     text: string,
     price: number,
-    defaultChecked?: boolean
+    isSelected?: boolean
     image?: string,
     materials?: string[],
     descr?: string
